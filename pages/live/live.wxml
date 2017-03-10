@@ -1,0 +1,85 @@
+<view class="section tc">
+  <video id="myVideo" src="http://wxsnsdy.tc.qq.com/105/20210/snsdyvideodownload?filekey=30280201010421301f0201690402534804102ca905ce620b1241b726bc41dcff44e00204012882540400&bizid=1023&hy=SH&fileparam=302c020101042530230204136ffd93020457e3c4ff02024ef202031e8d7f02030f42400204045a320a0201000400"
+  controls style="width:100%;">
+  </video>
+</view>
+<view class="weui-tab">
+  <view class="weui-navbar">
+    <block wx:for-items="{{tabs}}" wx:key="{{index}}">
+      <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+        <view class="weui-navbar__title">{{item}}</view>
+      </view>
+    </block>
+    <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+  </view>
+  <view class="weui-tab__panel">
+
+    <!--聊天室开始-->
+    <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+
+      <!--新起的话题开始-->
+      <view class="weui-btn-area">
+        <view class="sendmessage">
+          <input id="message" bindinput="bindChange" type="text" value="{{content}}"></input>
+          <button class="weui-btn send" bindtap="add" type="primary">发送</button>
+        </view>
+        <view>
+          <span style="font-size:14px;">{{currentnumber}}</span> 
+        </view>
+      </view>
+      <view class="historycon">
+        <scroll-view scroll-y="true" class="history">
+          <text>{{text}}</text>
+        </scroll-view>
+      </view>
+
+      <!--新起的话题结束-->
+    </view>
+
+    <!--聊天室结束-->
+
+    <!--提问区开始-->
+    <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+    </view>
+
+    <!--提问区结束-->
+
+    <!-- 个人及课程介绍开始 -->
+    <view class="weui-tab__content" hidden="{{activeIndex != 2}}">
+
+      <!--课程简介开始-->
+      <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__hd">课程简介</view>
+        <view class="weui-panel__bd">
+          <navigator url="{{toYdma}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="">
+              <view class="weui-media-box__title">微信小程序必知必会</view>
+              <view class="weui-media-box__desc">微信小程序第一步</view>
+              <view class="weui-media-box__desc">1.什么是微信小程序;2.微信小程序能力;3.微信小程序入口;4.什么类型的应用适合，什么不适合？;5.微信小程序准备</view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+
+      <!-- 课程介绍结束 -->
+
+      <!--个人信息开始-->
+      <view class="weui-panel weui-panel_access">
+        <view class="weui-panel__hd">个人信息</view>
+        <view class="weui-panel__bd">
+          <navigator url="{{toYdma}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">
+            <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">
+              <image style="width: 100px; height: 100px;margin-top:-20px; " mode="{{headermode}}" src="{{headerimg}}"></image>
+            </view>
+            <view class="weui-media-box__bd weui-media-box__bd_in-appmsg" style="margin-left:30px;margin-bottom:40px;">
+              <view class="weui-media-box__title">陈玉龙</view>
+              <view class="weui-media-box__desc">IT兄弟会联合创始人，技术总监 知名的 互联网架构师、技术专家、IT教育专家。</view>
+            </view>
+          </navigator>
+        </view>
+      </view>
+
+      <!--个人信息结束 -->
+    </view>
+  </view>
+</view>
